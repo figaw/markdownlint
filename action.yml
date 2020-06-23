@@ -1,0 +1,12 @@
+name: 'markdownlint'
+description: 'Run the ruby markdownlint'
+inputs:
+  parameters:  # id of input
+    description: 'parameters for markdownlint'
+    required: false
+    default: '--help'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.parameters }}
