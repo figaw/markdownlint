@@ -7,6 +7,6 @@ inputs:
     default: '--help'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'ruby.Dockerfile'
   args:
     - ${{ inputs.parameters }}
