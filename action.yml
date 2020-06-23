@@ -10,4 +10,6 @@ outputs:
     description: 'the markdownlint logs'
 runs:
   using: 'docker'
-  image: 'action.Dockerfile'
+  image: 'docker://figaw/markdownlint:ruby2.7.1-alpine3.12'
+  args:
+    - ${{ inputs.parameters }}
