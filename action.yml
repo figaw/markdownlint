@@ -5,8 +5,11 @@ inputs:
     description: 'parameters for markdownlint'
     required: false
     default: '--help'
+outputs:
+  log: # id of the output
+    description: 'the markdownlint logs'
 runs:
   using: 'docker'
-  image: 'ruby.Dockerfile'
+  image: 'action.Dockerfile'
   args:
     - ${{ inputs.parameters }}
