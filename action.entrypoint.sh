@@ -1,9 +1,15 @@
-#!/bin/sh -l
+#!/bin/sh
 
-log=$(mdl $INPUT_PARAMETERS)
-echo "::set-output name=log::$log"
+LOG=$(mdl $INPUT_PARAMETERS)
 
-if [[ $log == *"A detailed description of the rules"* ]]; then
+LOG="${LOG//'%'/'%25'}"
+LOG="${LOG//$'\n'/'%0A'}"
+LOG="${LOG//$'\r'/'%0D'}"
+
+echo "::set-output name=log::$LOG"
+
+echo $LOG | grep "^.*A detailed description of the rules.*" > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
     exit 1
 fi
 
